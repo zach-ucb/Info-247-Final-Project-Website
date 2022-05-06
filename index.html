@@ -1,0 +1,338 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+		<link href="idb-styles.css" rel="stylesheet">
+		<link href="images/favicon.png" rel="icon" type="image/png">
+		<link href="images/favicon.svg" rel="mask-icon">
+		<title>Decoded: The story of a typical data breach, and its consequences for you.</title>
+		<meta description="...">
+	</head>
+	<body class="idb-page-body" role="document">
+		<div class="idb-intro-section">
+			<div>
+				<h1 class="idb-intro-title-group">
+					<span class="idb-intro-title">Decoded: <span class="idb-intro-title-underscore"></span></span><br>
+					<span class="idb-intro-subtitle">The story of a typical data breach,<br class="d-none d-lg-block"> and its consequences for you.</span>
+				</h1>
+				<p>Yahoo, Equifax, Facebook. Billions of records stolen.<p>
+				<p>You might have heard some names and numbers, but what does that mean for you? And what can you do to stay safe?</p>
+				<p>We’ve mapped out this shadowy landscape, investigating which targets are seeing more breaches, what information is being exposed most frequently, and how that information is being used.</strong></p>
+				<p>Join us as we explore what happens during and after a breach, how it can affect you, and what you can do to protect yourself.</p>
+				<div class="idb-intro-scroll-guidance">
+					<i class="idb-intro-scroll-icon bi-chevron-double-down"></i>
+					<span class="idb-intro-scroll-guidance-text">Scroll down to begin</span>
+				</div>
+			</div>
+		</div>
+		<div class="idb-note-section idb-section">
+			<div class="idb-section-content">
+				<h2 class="idb-note-header">What exactly is a data breach?</h2>
+				<p>A <strong>data breach</strong> is when <strong>confidential or sensitive information</strong> is <strong>stolen or accidentally released</strong>, and then <strong>used</strong> by an unauthorized party.</p>
+				<p>Anyone, from individuals to corporations to governments, and anything, from trade secrets to personal and financial information, could be a target.</p>
+				<p>However, the vast majority of data breaches affect companies and other organizations that have personal information about thousands to billions of individuals.</p>
+			</div>
+		</div>
+		<div class="idb-event-section idb-section">
+			<div class="idb-event-section-header">
+				<span class="idb-event-section-header-clock">3:42<span class="idb-event-section-header-clock-am-pm">AM</span></span>
+				<h2 class="idb-event-section-header-title">The breach begins</h2>
+				<p class="idb-event-section-header-description">A hacker breaks into your bank’s network and starts extracting the contents of a customer database.</p>
+			</div>
+			<div class="idb-section-content">
+				<h3 class="idb-event-subsection-title">Non-retail businesses and healthcare providers have been the most popular targets for breaches recently.</h3>
+				<p>Schools, governments, and retailers used to be bigger targets, but have since seen a steady drop in yearly breaches.</p>
+				<h4 class="idb-event-chart-group-title">Number of Breaches</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Educational Institutions</h5>
+						<div id="idb-observable-embed-targets-time-plots-educational-institutions"></div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Governments and Militaries</h5>
+						<div id="idb-observable-embed-targets-time-plots-governments-militaries"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Financial Businesses</h5>
+						<div id="idb-observable-embed-targets-time-plots-financial-businesses"></div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Retail Businesses</h5>
+						<div id="idb-observable-embed-targets-time-plots-retail-businesses"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Other Businesses</h5>
+						<div id="idb-observable-embed-targets-time-plots-other-businesses"></div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Healthcare Providers</h5>
+						<div id="idb-observable-embed-targets-time-plots-healthcare-providers"></div>
+					</div>
+				</div>
+				<script type="module">
+					import define from "./observable-embeds/info-prices-animated-chart/index.js";
+					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
+					const library = new Library();
+					const runtime = new Runtime(library);
+					const educationalInstitutionsChartDiv = document.querySelector("#idb-observable-embed-targets-time-plots-educational-institutions")
+					const main2 = runtime.module(define, (name => {
+						if (name === "educationalInstitutionsLineChart") {
+							return new Inspector(educationalInstitutionsChartDiv)
+						}
+						else if (name === "governmentsLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-targets-time-plots-governments-militaries"))
+						}
+						else if (name === "financialInsuranceBusinessesLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-targets-time-plots-financial-businesses"))
+						}
+						else if (name === "retailersLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-targets-time-plots-retail-businesses"))
+						}
+						else if (name === "otherBusinessesLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-targets-time-plots-other-businesses"))
+						}
+						else if (name === "healthcareProvidersLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-targets-time-plots-healthcare-providers"))
+						}
+					}));
+					main2.redefine("width", resizer(educationalInstitutionsChartDiv.parentNode, "width"));
+					main2.redefine("height", resizer(educationalInstitutionsChartDiv.parentNode, "height"));
+					function resizer(element, dimension) {
+						return library.Generators.observe(notify => {
+							let value = notify((element.getBoundingClientRect())[dimension]);
+							const observer = new ResizeObserver(([entry]) => {
+								const newValue = entry.contentRect[dimension];
+								if (newValue !== value) {
+									notify(value = newValue);
+								}
+							});
+							observer.observe(element);
+							return (() => observer.disconnect());
+						});
+					}
+				</script>
+				<h3 class="idb-event-subsection-title">Targeted hacks have become the dominant cause of data breaches, but 20% of breaches are accidents.</h3>
+				<ul>
+					<li>Over 70% of breaches are the result of targeted hacks.</li>
+					<li>A steady 15–25% of breaches each year have been happening because sensitive data is accidentally leaked or posted online.</li>
+					<li>Until the mid–2010s, many of the breaches each year were caused by portable devices or paper documents being misplaced or stolen, but those are now much rarer.</li>
+				</ul>
+				<!-- My bar charts -->
+			</div>
+		</div>
+		<div class="idb-event-section idb-section">
+			<div class="idb-event-section-header">
+				<span class="idb-event-section-header-clock">4:15<span class="idb-event-section-header-clock-am-pm">AM</span></span>
+				<h2 class="idb-event-section-header-title">Your data is stolen</h2>
+				<p class="idb-event-section-header-description">The hacker finishes downloading your and thousands of other customers’ personal information.</p>
+			</div>
+			<div class="idb-section-content">
+				<h3 class="idb-event-subsection-title">Contact information is being exposed in a larger percentage of breaches each year</h3>
+				<p>As we've been buying and selling more online, we've have been handing this information over to more and more companies. However, contact information is quite useful to attackers — they can use it to commit identity fraud (pretending to be you), or they can sell it to data brokers who'll use it for targeted marketing. Meanwhile, a lower and lower percentage of the breaches each year are exposing passwords.</p>
+				<h4 class="idb-event-chart-group-title">Percent of Breaches Containing...</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Names</h5>
+						<div id="idb-observable-embed-info-types-time-plots-names"></div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Home Addresses</h5>
+						<div id="idb-observable-embed-info-types-time-plots-home-addresses"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Phone Numbers</h5>
+						<div id="idb-observable-embed-info-types-time-plots-phone-numbers"></div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="idb-event-chart-title">Passwords</h5>
+						<div id="idb-observable-embed-info-types-time-plots-passwords"></div>
+					</div>
+				</div>
+				<script type="module">
+					import define from "./observable-embeds/info-prices-animated-chart/index.js";
+					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
+					const library = new Library();
+					const runtime = new Runtime(library);
+					const namesChartDiv = document.querySelector("#idb-observable-embed-info-types-time-plots-names")
+					const main = runtime.module(define, (name => {
+						if (name === "namesLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-names"))
+						}
+						else if (name === "homeAddressesLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-home-addresses"))
+						}
+						else if (name === "phoneNumbersLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-phone-numbers"))
+						}
+						else if (name === "passwordsLineChart") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-passwords"))
+						}
+					}));
+					main.redefine("width", resizer(namesChartDiv.parentNode, "width"));
+					main.redefine("height", resizer(namesChartDiv.parentNode, "height"));
+					function resizer(element, dimension) {
+						return library.Generators.observe(notify => {
+							let value = notify((element.getBoundingClientRect())[dimension]);
+							const observer = new ResizeObserver(([entry]) => {
+								const newValue = entry.contentRect[dimension];
+								if (newValue !== value) {
+									notify(value = newValue);
+								}
+							});
+							observer.observe(element);
+							return (() => observer.disconnect());
+						});
+					}
+				</script>
+				<h3 class="idb-event-subsection-title">Over 100 types of information have been exposed in previous breaches</h3>
+				<p>It’s not all just emails, passwords, and contact info. Over 100 distinct types of information have been exposed in breaches of online services over the past decade.</p>
+				<p><strong>Click to explore the full breadth of data that has been exposed:</strong></p>
+				<div class="idb-observable-embed-info-types-interactive-tree-container">
+					<div id="idb-observable-embed-info-types-interactive-tree"></div>
+				</div>
+				<script type="module" src="info-types-interactive-tree-embed.js"></script>
+			</div>
+		</div>
+		<div class="idb-event-section idb-section">
+			<div class="idb-event-section-header">
+				<span class="idb-event-section-header-clock">12:04<span class="idb-event-section-header-clock-am-pm">PM</span></span>
+				<h2 class="idb-event-section-header-title">Your data is sold on<br class="d-none d-md-block">dark web marketplaces</h2>
+				<p class="idb-event-section-header-description">The hacker packages your name, Social Security Number, home address, and phone number for sale on a dark web forum, where they are scooped up by a lucky buyer.</p>
+			</div>
+			<div class="idb-section-content">
+				<h3 class="idb-event-subsection-title">The price of your data varies depending on its use</h3>
+				<ul>
+					<li>Email addresses are sold in bulk for less than $0.00001 a piece, because they are only useful for spamming and marketing.</li>
+					<li>Email logins are sold for around $65 — these are valuable because they can be used to reset your passwords and gain access to lots of other services.</li>
+					<li>PayPal and cryptocurrency exchange logins sell for $100–$500, because the funds in those accounts can be withdrawn immediately.</li>
+				</ul>
+				<h4 class="idb-event-chart-group-title">Prices of Stolen Personal Information on the Dark Web</h4>
+				<p><strong>Hover to explore what’s for sale at which prices:</strong></p>
+				<!-- Start of Tableau Embed -->
+				<div class="tableauPlaceholder" id="viz1651284283066" style="position: relative;">
+				    <noscript>
+				        <a href="#"><img alt="Prices " src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;24&#47;247DataPrices&#47;Prices&#47;1_rss.png" style="border: none;" /></a>
+				    </noscript>
+				    <object class="tableauViz" style="display: none;">
+				        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" /> <param name="embed_code_version" value="3" /> <param name="site_root" value="" /><param name="name" value="247DataPrices&#47;Prices" />
+				        <param name="tabs" value="no" /><param name="toolbar" value="no" /><param name="static_image" value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;24&#47;247DataPrices&#47;Prices&#47;1.png" />
+				        <param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="no"/><param name="display_count" value="no" />
+				        <param name="language" value="en-US" /><param name="filter" value="publish=yes" />
+				    </object>
+				</div>
+				<script type="text/javascript">
+				    var divElement = document.getElementById("viz1651284283066");
+				    var vizElement = divElement.getElementsByTagName("object")[0];
+				    vizElement.style.width = "100%";
+				    vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+				    var scriptElement = document.createElement("script");
+				    scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+				    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+				</script>
+				<!-- End of Tableau Embed -->
+				<h3 class="idb-event-subsection-title">Packaged profiles are among the most valuable</h3>
+				<p>Comprehensive profiles are much more useful than individual bits of personal information — if an attacker has enough information to “prove” to a bank or company that they are you, they can make off with a lot of money.</p>
+				<p>Your social security number by itself will sell for only $1-2. <strong>But see just how much more valuable it gets when it’s combined with your name, mailing address, and phone number:</strong></p>
+				<div class="idb-observable-embed-info-prices-animated-chart-container">
+					<div id="idb-observable-embed-info-prices-animated-chart-button"></div>
+					<div id="idb-observable-embed-info-prices-animated-chart"></div>
+				</div>
+				<script type="module">
+					import define from "./observable-embeds/info-prices-animated-chart/index.js";
+					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
+					const library = new Library();
+					const runtime = new Runtime(library);
+					const chartDiv = document.querySelector("#idb-observable-embed-info-prices-animated-chart")
+					const main = runtime.module(define, (name => {
+						if (name === "viewof combineButtonWasClicked") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-prices-animated-chart-button"))
+						}
+						else if (name === "infoPricesAnimatedChart") {
+							return new Inspector(chartDiv)
+						}
+					}));
+					main.redefine("width", resizer(chartDiv.parentNode, "width"));
+					main.redefine("height", resizer(chartDiv.parentNode, "height"));
+					function resizer(element, dimension) {
+						return library.Generators.observe(notify => {
+							let value = notify((element.getBoundingClientRect())[dimension]);
+							const observer = new ResizeObserver(([entry]) => {
+								const newValue = entry.contentRect[dimension];
+								if (newValue !== value) {
+									notify(value = newValue);
+								}
+							});
+							observer.observe(element);
+							return (() => observer.disconnect());
+						});
+					}
+				</script>
+			</div>
+		</div>
+		<div class="idb-event-section idb-section">
+			<div class="idb-event-section-header">
+				<span class="idb-event-section-header-clock">11:42<span class="idb-event-section-header-clock-am-pm">PM</span> the next day</span>
+				<h2 class="idb-event-section-header-title">The buyer launches<br class="d-none d-md-block">their attacks</h2>
+				<p class="idb-event-section-header-description">These can happen in many different ways. The buyer can transfer funds from your accounts, secure a loan under your name, or impersonate you to scam your family members.</p>
+			</div>
+			<div class="idb-section-content">
+				<h3 class="idb-event-subsection-title">Your breached personal information can be weaponized in lots of creative ways:</h3>
+				<!-- Begin Temporary Image -->
+				<div style="width: 85%; margin: 34px auto;">
+					<img src="attack-types-flowchart.png" style="width: 100%">
+				</div>
+				<!-- End Temporary Image -->
+				<h3 class="idb-event-subsection-title">As a victim, you stand to lose a lot...</h3>
+				<div class="idb-median-fraud-loss-container">
+					<p class="idb-median-fraud-loss-number">
+						$500
+					</p>
+					<p class="idb-median-fraud-loss-description" style="margin-top: -10px;">
+						is the median loss from identity fraud, according to the FTC.
+					</p>
+				</div>
+				<p>But financial loss is not the only damage. The <strong>reputational harm</strong> from having your social media or e-commerce accounts taken over, <strong>stress</strong> from being attacked, and <strong>time lost</strong> dealing with the damage are incalculable.</p>
+				<!-- <h3 class="idb-event-subsection-title">...and identity theft and identity fraud are on the rise</h3> -->
+				<!-- Identity fraud line chart -->
+			</div>
+		</div>
+		<div class="idb-note-section idb-section">
+			<div class="idb-section-content">
+				<h2 class="idb-note-header">What can I do about this threat?</h2>
+				<p>The number of stolen records is increasing, but you’re not helpless! There’s a lot you can do to keep yourself protected.</p>
+				<h3 class="idb-event-subsection-title">Three important things to <em>do right away:</em></h3>
+				<div class="idb-note-item">
+					<span class="idb-note-item-number">1.</span>
+					<div>
+						<h4 class="idb-note-item-title">Use a password manager and strong, unique passwords</h4>
+						<p>A password manager allows you to use a strong, unique password for every site without having to remember and type them all. That way, if your password for one service is exposed, attackers won’t be able to use it to figure out what your passwords for other services might be.</p>
+					</div>
+				</div>
+				<div class="idb-note-item">
+					<span class="idb-note-item-number">2.</span>
+					<div>
+						<h4 class="idb-note-item-title">Turn on two-factor authentication</h4>
+						<p>Two-factor authentication makes it impossible to use your login info without having physical access to your phone. A 2019 study by Microsoft found that <strong>two-factor authentication blocks 99.9% of automated attacks</strong>.</p>
+					</div>
+				</div>
+				<div class="idb-note-item">
+					<span class="idb-note-item-number">3.</span>
+					<div>
+						<h4 class="idb-note-item-title">Sign up for free breach monitoring</h4>
+						<p>Breach monitoring services like <a href="https://haveibeenpwned.com">HaveIBeenPwned.com</a> will alert you when they uncover stolen data with your email address or phone number in it, so you can take action quickly.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

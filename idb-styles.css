@@ -1,0 +1,282 @@
+:root {
+
+	--display-font: "IBM Plex Mono", monospace;
+	--body-font: "IBM Plex Sans", -apple-system, system-ui, sans-serif;
+
+	--light-green-color: #5ae3a1;
+	--very-light-purple-color: rgb(251, 251, 255);
+	--light-purple-color: rgb(241, 237, 253);
+	--medium-purple-color: #3b1eaa;
+	--dark-purple-color: #2a1578;
+	--very-dark-purple-color: #120935;
+
+	--corner-radius: 40px;
+
+}
+
+
+* {
+	font-family: var(--body-font);
+	font-weight: 500;
+}
+
+
+
+/* Intro */
+
+.idb-intro-section {
+	display: flex;
+	align-items: center;
+	background: url("purple-mesh-background.jpg");
+	background-size: cover;
+	color: rgba(255, 255, 255, 0.89);
+	font-size: 18px;
+}
+
+.idb-intro-section > * {
+	width: 100%;
+	max-width: 800px;
+}
+
+.idb-intro-title-group {
+	margin-bottom: 60px;
+	color: var(--light-green-color);
+}
+
+.idb-intro-title {
+	line-height: 130px;
+	font-family: var(--display-font);
+	font-size: 74px;
+	font-weight: 700;
+	letter-spacing: -0.8;
+}
+
+.idb-intro-subtitle {
+	font-family: var(--display-font);
+	font-size: 36px;
+	font-weight: 700;
+	letter-spacing: -0.8;
+}
+
+.idb-intro-scroll-guidance {
+	display: flex;
+	align-items: center;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	color: rgba(255, 255, 255, 0.85);
+}
+
+.idb-intro-scroll-guidance-text {
+	font-size: 22px;
+}
+
+.idb-intro-scroll-icon {
+	font-size: 32px;
+	margin-right: 20px;
+}
+
+
+
+/* General Components */
+
+.idb-page-body {
+	background-color: var(--very-light-purple-color);
+}
+
+.idb-section {
+	width: 85%;
+	max-width: 1050px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: var(--corner-radius);
+}
+
+.idb-section-content {
+	padding: 60px;
+	font-size: 18px;
+}
+
+.idb-section-content strong {
+	color: var(--medium-purple-color);
+}
+
+.idb-section-content li:not(:first-child) {
+	margin-top: 10px;
+}
+
+
+
+/* Definitions Section */
+
+.idb-note-section {
+	background-color: var(--light-purple-color);
+}
+
+.idb-note-header {
+	margin-bottom: 30px;
+	color: var(--dark-purple-color);
+	font-family: var(--display-font);
+	font-size: 36px;
+	font-weight: 700;
+	letter-spacing: -1.4;
+}
+
+.idb-note-item {
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+}
+
+.idb-note-item-number {
+	margin-right: 30px;
+	color: var(--dark-purple-color);
+	font-size: 40px;
+	font-weight: 600;
+}
+
+.idb-note-item-title {
+	margin-bottom: 14px;
+	color: var(--medium-purple-color);
+	font-size: 24px;
+	font-weight: 600;
+}
+
+
+
+/* Event Sections */
+
+.idb-event-section-header {
+	padding: 50px;
+	border-top-left-radius: var(--corner-radius);
+	border-top-right-radius: var(--corner-radius);
+	background-color: var(--very-dark-purple-color);
+}
+
+.idb-event-section-header-clock {
+	color: var(--light-green-color);
+	opacity: 0.7;
+	font-family: var(--display-font);
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: -0.3;
+}
+
+.idb-event-section-header-clock-am-pm {
+	margin-left: 8px;
+	font-size: 19px;
+	font-weight: 400;
+}
+
+.idb-event-section-header-title {
+	max-width: 600px;
+	margin-top: 10px;
+	margin-bottom: 18px;
+	color: var(--light-green-color);
+	font-family: var(--display-font);
+	font-weight: 600;
+	font-size: 38px;
+	letter-spacing: -1;
+}
+
+.idb-event-section-header-description {
+	max-width: 600px;
+	margin-top: 12px;
+	margin-bottom: 6px;
+	color: var(--light-purple-color);
+	font-family: var(--display-font);
+	font-weight: 400;
+	font-size: 18px;
+	letter-spacing: -0.9;
+}
+
+.idb-event-section > .idb-section-content {
+	background-color: var(--light-purple-color);
+	border-bottom-left-radius: var(--corner-radius);
+	border-bottom-right-radius: var(--corner-radius);
+}
+
+.idb-event-subsection-title {
+	margin-bottom: 16px;
+	font-size: 26px;
+	font-weight: 700;
+	color: var(--dark-purple-color);
+}
+
+.idb-event-subsection-title:not(:first-child) {
+	margin-top: 50px;
+}
+
+.idb-event-chart-group-title {
+	margin-top: 30px;
+	text-align: center;
+	color: var(--medium-purple-color);
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.idb-event-chart-title {
+	margin-top: 30px;
+	margin-bottom: -14px;
+	text-align: center;
+	color: var(--medium-purple-color);
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.idb-median-fraud-loss-container {
+	margin-bottom: 30px;
+	text-align: center;
+	color: var(--medium-purple-color);
+	font-weight: 600;
+}
+
+.idb-median-fraud-loss-number {
+	margin-bottom: -20px;
+	font-size: 100px;
+	font-weight: 600;
+}
+
+
+
+.observablehq:last-of-type {
+	margin-bottom: 20px;
+}
+
+
+
+@media (max-width: 767px) {
+
+	.idb-intro-section {
+		padding: 10%;
+	}
+
+	.idb-intro-title {
+		font-size: 60px;
+	}
+
+	.idb-intro-subtitle {
+		font-size: 30px;
+	}
+
+	.idb-section {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+
+}
+
+
+@media (min-width: 768px) {
+
+	.idb-intro-section {
+		height: 102vh;
+		min-height: 820px;
+		padding: 100px;
+	}
+
+	.idb-section {
+		margin-top: 200px;
+		margin-bottom: 200px;
+	}
+
+}
