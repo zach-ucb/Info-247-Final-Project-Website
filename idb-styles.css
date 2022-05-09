@@ -282,5 +282,16 @@
 }
 
 .button {
-	border-radius: 16px;
+	border-radius: none;
+	padding: 8px 16px 8px 16px;
+	color: var(--dark-purple-color);
+	background-color: transparent;
+	border: 2px solid var(--dark-purple-color);
+}
+
+.button:hover {
+	border-radius: none;
+	color: var(--very-light-purple-color);
+	background-color: var(--dark-purple-color);
+	border: 2px solid var(--dark-purple-color);
 }
