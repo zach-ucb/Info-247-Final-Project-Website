@@ -9,7 +9,8 @@
 		<link href="idb-styles.css" rel="stylesheet">
 		<link href="images/favicon.png" rel="icon" type="image/png">
 		<link href="images/favicon.svg" rel="mask-icon">
-		<title>Decoded: The story of a typical data breach, and its consequences for you.</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<title>Decoded <span class="title-animate">|</span> The story of a typical data breach, and its consequences for you.</title>
 		<meta description="...">
 	</head>
 	<body class="idb-page-body" role="document">
@@ -88,8 +89,8 @@
 				<script type="module">
 					import define from "./observable-embeds/info-prices-animated-chart/index.js";
 					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
-					const library = new Library();
-					const runtime = new Runtime(library);
+					// const library = new Library();
+					// const runtime = new Runtime(library);
 					const educationalInstitutionsChartDiv = document.querySelector("#idb-observable-embed-targets-time-plots-educational-institutions")
 					const main2 = runtime.module(define, (name => {
 						if (name === "educationalInstitutionsLineChart") {
@@ -169,23 +170,23 @@
 				<script type="module">
 					import define from "./observable-embeds/info-prices-animated-chart/index.js";
 					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
-					const library = new Library();
-					const runtime = new Runtime(library);
+					// const library = new Library();
+					// const runtime = new Runtime(library);
 					const namesChartDiv = document.querySelector("#idb-observable-embed-info-types-time-plots-names")
-					const main = runtime.module(define, (name => {
-						if (name === "namesLineChart") {
-							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-names"))
-						}
-						else if (name === "homeAddressesLineChart") {
-							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-home-addresses"))
-						}
-						else if (name === "phoneNumbersLineChart") {
-							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-phone-numbers"))
-						}
-						else if (name === "passwordsLineChart") {
-							return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-passwords"))
-						}
-					}));
+					// const main = runtime.module(define, (name => {
+					// 	if (name === "namesLineChart") {
+					// 		return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-names"))
+					// 	}
+					// 	else if (name === "homeAddressesLineChart") {
+					// 		return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-home-addresses"))
+					// 	}
+					// 	else if (name === "phoneNumbersLineChart") {
+					// 		return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-phone-numbers"))
+					// 	}
+					// 	else if (name === "passwordsLineChart") {
+					// 		return new Inspector(document.querySelector("#idb-observable-embed-info-types-time-plots-passwords"))
+					// 	}
+					// }));
 					main.redefine("width", resizer(namesChartDiv.parentNode, "width"));
 					main.redefine("height", resizer(namesChartDiv.parentNode, "height"));
 					function resizer(element, dimension) {
