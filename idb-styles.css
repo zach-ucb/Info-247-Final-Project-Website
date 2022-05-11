@@ -21,6 +21,20 @@
 	font-weight: 500;
 }
 
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+  }
+  
+.column {
+display: flex;
+flex-direction: column;
+flex-basis: 100%;
+flex: 1;
+}
+
 /* Buttons */
 
 .button {
@@ -171,6 +185,9 @@
 .idb-note-item-content{
 	display: flex;
 	flex-wrap: wrap;
+	background-color: #fff;
+	padding:24px;
+	border-radius: 12px;
 }
 
 .idb-note-item-number {
