@@ -24,9 +24,9 @@
 					<span class="idb-intro-title">HACKED<span class="idb-intro-title-underscore animate__animated animate__flash animate__infinite animate__slow">|</span></span><br>
 					<span class="idb-intro-subtitle">The story of a typical data breach,<br class="d-none d-lg-block"> and its consequences for you.</span>
 				</h1>
-				<p class="idb-intro-paragraph">Facebook, Yahoo, Equifax.
-				Billions of records stolen.
-				<p><b>But what does that mean for you?</b></p>
+				<p class="idb-intro-paragraph">Yahoo, Equifax, Facebook. Billions of records stolen.<p>
+				<p class="idb-intro-paragraph">You might have heard some names and numbers, but what does that mean for you? And what can you do to stay safe?</p>
+				<p class="idb-intro-paragraph">Join us as we explore what happens during and after a breach, how it can affect you, and what you can do to protect yourself.</p>
 				<div class="idb-intro-scroll-guidance">
 					<a class="button button-white" href="#section-1"><i class="idb-intro-scroll-icon bi-chevron-double-down"></i>Get Started</a>
 					<span class="idb-intro-scroll-guidance-text"></span>
@@ -315,12 +315,11 @@
 						<div class="idb-note-item-content">
 							<h4 class="idb-note-item-title">Use a Password Manager</h4>
 							<p>A password manager allows you to use a strong, unique password for every site without having to remember and type them all. That way, if your password for one service is exposed, attackers won’t be able to use it to figure out what your passwords for other services might be.</p>
-							
+
 							<div>
 								<a class="button" href="https://www.nytimes.com/wirecutter/reviews/best-password-managers/" target="_blank">
 									Get a Password Manager
 								</a>
-								<p class="idb-button-caption">Directs to Wirecutter Review</p>
 							</div>
 						</div>
 					</div>
@@ -331,9 +330,8 @@
 							<p>Two-factor authentication makes it impossible to use your login info without having physical access to your phone. A 2019 study by Microsoft found that <strong>two-factor authentication blocks 99.9% of automated attacks</strong>.</p>
 							<div>
 								<a class="button" href="https://lifehacker.com/heres-everywhere-you-should-enable-two-factor-authentic-5938565">
-									Enable 2FA
+									Turn On 2FA
 								</a>
-								<p class="idb-button-caption">Directs to Lifehacker Guide</p>
 							</div>
 						</div>
 					</div>
@@ -343,12 +341,12 @@
 							<h4 class="idb-note-item-title">Set Up Free Monitoring</h4>
 							<p>Breach monitoring services like <a href="https://haveibeenpwned.com">HaveIBeenPwned.com</a> will alert you when they uncover stolen data with your email address or phone number in it, so you can take action quickly.</p>
 							<a class="button" href="https://haveibeenpwned.com">
-								Set up for Free Monitoring
+								Set Up Free Monitoring
 							</a>
 						</div>
 					</div>
 				</div>
-				
+
 
 				<div class="column">
 
@@ -374,7 +372,7 @@
 					<div class="idb-note-item">
 						<!-- <span class="idb-note-item-number">3.</span> -->
 						<div class="idb-note-item-content">
-							<h4 class="idb-note-item-title">File Report to the FTC</h4>
+							<h4 class="idb-note-item-title">File a Report to the FTC</h4>
 							<p>You can file a report to the FTC and they will guide you with further measures you can take to stop identity theft. They also have more resources for what to do before and after a breach and identity thefts.</p>
 							<a class="button" href="https://consumer.ftc.gov/features/identity-theft">Access FTC Resources</a>
 						</div>
@@ -389,20 +387,20 @@
 			<div class="idb-footer-content">
 
 				<div class="row">
-					
+
 					<div class="column">
 
 						<div class="idb-team">
 
 							<h3 class="idb-event-section-header-description">Creators</h3>
-	
+
 							<p>We are graduate students at UC Berkeley passionate about translating complex issues through data visualization.</p>
 							<h3 class="idb-event-section-header-description">Zach</h3>
 							<p>Zach is a Software Engineer studying at the UC Berkeley Department of EECS</p>
-	
+
 							<h3 class="idb-event-section-header-description">Chris</h3>
 							<p>Chris is a UX Designer studying at the UC Berkeley School of Information<p>
-	
+
 								<h3 class="idb-event-section-header-description">Michael</h3>
 							<p>Michael is a Product Manager studying at the UC Berkeley School of Information</p>
 						</div>
@@ -435,21 +433,21 @@
 			$(document).ready(function(){
 			  // Add smooth scrolling to all links
 			  $("a").on('click', function(event) {
-			
+
 				// Make sure this.hash has a value before overriding default behavior
 				if (this.hash !== "") {
 				  // Prevent default anchor click behavior
 				  event.preventDefault();
-			
+
 				  // Store hash
 				  var hash = this.hash;
-			
+
 				  // Using jQuery's animate() method to add smooth page scroll
 				  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
 				  $('html, body').animate({
 					scrollTop: $(hash).offset().top
 				  }, 800, function(){
-			
+
 					// Add hash (#) to URL when done scrolling (default click behavior)
 					window.location.hash = hash;
 				  });
@@ -460,10 +458,10 @@
 
 		<script>
 			window.onscroll = function() {myFunction()};
-			
+
 			var header = document.getElementById("myHeader");
 			var sticky = header.offsetTop;
-			
+
 			function myFunction() {
 			if (window.pageYOffset > sticky) {
 				header.classList.add("idb-navbar-sticky");
@@ -477,5 +475,5 @@
 		</body>
 
 
-	
+
 </html>

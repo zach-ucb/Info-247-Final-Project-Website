@@ -34,7 +34,7 @@ li {
 	flex-wrap: wrap;
 	width: 100%;
   }
-  
+
 .column {
 display: flex;
 flex-direction: column;
@@ -48,13 +48,15 @@ flex: 1;
 	display: flex;
 	justify-content: center;
 	align-self: flex-start;
+	align-items: center;
 	text-decoration: none;
 	font-family: var(--display-font);
 	border-radius: none;
 	padding: 8px 16px 8px 16px;
 	color: var(--dark-purple-color);
-	background-color: transparent;
+	background-color: var(--light-purple-color);
 	border: 2px solid var(--dark-purple-color);
+	border-radius: 10px;
 }
 
 .button:hover {
@@ -212,10 +214,6 @@ flex: 1;
 	font-size: 18px;
 }
 
-.idb-section-content strong {
-	color: var(--medium-purple-color);
-}
-
 .idb-section-content li:not(:first-child) {
 	margin-top: 10px;
 }
@@ -241,17 +239,25 @@ flex: 1;
 	letter-spacing: -1.4;
 }
 
+.idb-note-header:not(:first-child) {
+	margin-top: 80px;
+}
+
 .idb-note-item {
 	display: flex;
 	align-items: center;
 	margin-top: 40px;
 }
 
+.idb-section-half {
+	font-size: 20px;
+}
+
 .idb-note-item-content{
 	display: flex;
 	flex-wrap: wrap;
 	background-color: #fff;
-	padding:24px;
+	padding: 24px;
 	border-radius: 12px;
 }
 
@@ -331,13 +337,13 @@ flex: 1;
 
 .idb-event-subsection-title {
 	margin-bottom: 16px;
-	font-size: 26px;
+	font-size: 30px;
 	font-weight: 700;
 	color: var(--dark-purple-color);
 }
 
 .idb-event-subsection-title:not(:first-child) {
-	margin-top: 65px;
+	margin-top: 75px;
 }
 
 .idb-event-chart-group-title {
@@ -355,6 +361,10 @@ flex: 1;
 	color: var(--medium-purple-color);
 	font-size: 20px;
 	font-weight: 600;
+}
+
+.idb-event-chart {
+	margin-top: 16px;
 }
 
 .idb-event-bar-chart-caption-row {
