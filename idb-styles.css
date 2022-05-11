@@ -26,7 +26,7 @@
 .button {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-self: flex-start;
 	text-decoration: none;
 	font-family: var(--display-font);
 	border-radius: none;
@@ -120,11 +120,12 @@
 }
 
 .idb-section {
-	width: 85%;
-	max-width: 1050px;
+	width: 100%;
+	/* max-width: 1050px; */
 	margin-left: auto;
 	margin-right: auto;
-	border-radius: var(--corner-radius);
+	background-color: var(--light-purple-color);
+	/* border-radius: var(--corner-radius); */
 }
 
 .idb-section-content {
@@ -138,6 +139,10 @@
 
 .idb-section-content li:not(:first-child) {
 	margin-top: 10px;
+}
+
+.idb-section-half{
+	width:50%;
 }
 
 
@@ -192,8 +197,8 @@
 
 .idb-event-section-header {
 	padding: 50px;
-	border-top-left-radius: var(--corner-radius);
-	border-top-right-radius: var(--corner-radius);
+	/* border-top-left-radius: var(--corner-radius); */
+	/* border-top-right-radius: var(--corner-radius); */
 	background-color: var(--very-dark-purple-color);
 }
 
@@ -235,9 +240,11 @@
 }
 
 .idb-event-section > .idb-section-content {
+	width: 85%;
+	margin: 0 auto;
 	background-color: var(--light-purple-color);
-	border-bottom-left-radius: var(--corner-radius);
-	border-bottom-right-radius: var(--corner-radius);
+	/* border-bottom-left-radius: var(--corner-radius);
+	border-bottom-right-radius: var(--corner-radius); */
 }
 
 .idb-event-subsection-title {
@@ -288,6 +295,16 @@
 }
 
 
+/* SECTION SPECIFIC */
+
+#section-1 {
+	height: 100%;
+	background-color: var(--light-purple-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 
 @media (max-width: 767px) {
 
@@ -319,9 +336,9 @@
 		padding: 100px;
 	}
 
-	.idb-section {
+	/* .idb-section {
 		margin-top: 200px;
 		margin-bottom: 200px;
-	}
+	} */
 
 }
