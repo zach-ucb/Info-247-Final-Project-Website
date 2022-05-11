@@ -132,7 +132,18 @@ flex: 1;
 }
 
 
+.idb-whatis-scroll-guidance{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 64px;
+}
 
+.whatis-chevron {
+	color: var(--dark-purple-color);
+	font-size:48px;
+	--animate-duration: 5s;
+}
 
 /* General Components */
 
@@ -374,6 +385,37 @@ flex: 1;
 
 .observablehq:last-of-type {
 	margin-bottom: 20px;
+}
+
+
+
+/* FOOTER */
+
+.idb-footer{
+	background-color: var(--very-dark-purple-color);
+	display:flex;
+	justify-content: center;
+}
+
+.idb-footer-content{
+	margin-top: 48px;
+	width:85%;
+	color: #fff;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+}
+
+.idb-footer-description{
+	max-width: 600px;
+	margin-top: 48px;
+	margin-bottom: 48px;
+	color: var(--light-purple-color);
+	font-family: var(--display-font);
+	font-weight: 400;
+	font-size: 18px;
+	letter-spacing: -0.9;
 }
 
 /* SECTION SPECIFIC */
