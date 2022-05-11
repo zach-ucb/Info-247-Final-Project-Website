@@ -326,7 +326,7 @@ flex: 1;
 }
 
 .idb-event-subsection-title:not(:first-child) {
-	margin-top: 50px;
+	margin-top: 65px;
 }
 
 .idb-event-chart-group-title {
@@ -344,6 +344,18 @@ flex: 1;
 	color: var(--medium-purple-color);
 	font-size: 20px;
 	font-weight: 600;
+}
+
+.idb-event-bar-chart-caption-row {
+	display: flex;
+	align-items: center;
+	gap: 26px;
+	margin-top: 60px;
+	margin-left: 56px;
+}
+
+.idb-event-bar-chart-caption {
+	flex-shrink: 2;
 }
 
 .idb-median-fraud-loss-container {
