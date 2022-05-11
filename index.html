@@ -16,6 +16,7 @@
 		<meta description="...">
 	</head>
 	<body class="idb-page-body" role="document">
+
 		<div class="idb-intro-section" id="top">
 			<div>
 				<h1 class="idb-intro-title-group">
@@ -31,6 +32,19 @@
 				</div>
 			</div>
 		</div>
+
+		<nav class="idb-navbar" id="myHeader">
+			<ul class="idb-nav-links">
+				<div class="idb-menu">
+					<li><a href="#section-2">1. The Breach Begins</a></li>
+					<li><a href="#section-3">2. The Breach Begins</a></li>
+					<li><a href="#section-4">3. The Breach Begins</a></li>
+					<li><a href="#section-5">4. The Breach Begins</a></li>
+					<li><a href="#section-6">5. The Breach Begins</a></li>
+				</div>
+			</ul>
+		</nav>
+
 		<div class="idb-note-section idb-section" id="section-1">
 			<div class="idb-section-half">
 				<h2 class="idb-note-header">What exactly is a data breach?</h2>
@@ -416,6 +430,21 @@
 			  });
 			});
 		</script>
+
+		<script>
+			window.onscroll = function() {myFunction()};
+			
+			var header = document.getElementById("myHeader");
+			var sticky = header.offsetTop;
+			
+			function myFunction() {
+			if (window.pageYOffset > sticky) {
+				header.classList.add("idb-navbar-sticky");
+			} else {
+				header.classList.remove("idb-navbar-sticky");
+			}
+			}
+			</script>
 
 
 		</body>

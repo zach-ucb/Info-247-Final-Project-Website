@@ -21,6 +21,14 @@
 	font-weight: 500;
 }
 
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
 /* Buttons */
 
 .button {
@@ -114,6 +122,42 @@
 
 
 /* General Components */
+
+.idb-navbar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+	background: var(--medium-purple-color);
+	color: #fff;
+	z-index: 100;
+}
+
+.idb-nav-links a{
+	color: #fff;
+}
+
+.idb-menu{
+	display: flex;
+ 	gap: 1em;
+ 	font-size: 18px;
+}
+
+.idb-menu li:hover {
+	background-color: #0000002a;
+	border-radius: 5px;
+	transition: 0.3s ease;
+}
+
+.idb-menu li {
+	padding: 5px 14px;
+   }
+
+.idb-navbar-sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+  }
 
 .idb-page-body {
 	background-color: var(--very-light-purple-color);
