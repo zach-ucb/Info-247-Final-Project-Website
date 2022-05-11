@@ -27,7 +27,7 @@ a {
 
 li {
 	list-style: none;}
-	
+
 .row {
 	display: flex;
 	flex-direction: row;
@@ -146,9 +146,19 @@ flex: 1;
 	z-index: 100;
 }
 
+.idb-nav-links{
+	margin-bottom: 0;;
+}
+
 .idb-nav-links a{
 	color: #fff;
 }
+
+.idb-nav-links a:hover{
+	color: var(--light-green-color);
+}
+
+
 
 .idb-menu{
 	display: flex;
@@ -156,8 +166,9 @@ flex: 1;
  	font-size: 18px;
 }
 
+
 .idb-menu li:hover {
-	background-color: #0000002a;
+	color: var(--light-green-color);
 	border-radius: 5px;
 	transition: 0.3s ease;
 }
