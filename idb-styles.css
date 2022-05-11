@@ -128,7 +128,7 @@ li {
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px;
-	background: var(--medium-purple-color);
+	background: var(--very-dark-purple-color);
 	color: #fff;
 	z-index: 100;
 }
