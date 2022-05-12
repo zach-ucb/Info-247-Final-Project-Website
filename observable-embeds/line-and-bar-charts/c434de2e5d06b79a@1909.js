@@ -32,7 +32,7 @@ marketItems.length - 1
 )}
 
 function _combineButtonWasClicked(Inputs){return(
-Inputs.button("Combine", {
+Inputs.button("Reset", {
   value: false,
   reduce: ((currentValue) => {
     return !currentValue
@@ -43,17 +43,17 @@ Inputs.button("Combine", {
 function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combinedProfileItemIndex,combineButtonWasClicked)
 {
 
-  
+
   const height = 700
   const margins = {top: 20, bottom: 20, left: 34, right: 20}
   const contentWidth = (width - margins.left - margins.right)
   const contentHeight = (height - margins.top - margins.bottom)
 
-  
+
   const marketItemsBefore = marketItems.filter(item => (item != combinedProfileItem))
   const inMarketItemsBefore = (item => (marketItemsBefore.indexOf(item) >= 0))
 
-  
+
   const barY = d3.scaleBand()
     .domain(d3.range(marketItems.length))
     .range([0, contentHeight])
@@ -74,14 +74,15 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
     ])
     .range([0, contentWidth])
 
-  
+
   const containerDiv = d3.create("div")
     .style("font-family", "-apple-system, system-ui, sans-serif")
-  
+
   const svg = (
     containerDiv.append("svg")
       .attr("width", width)
       .attr("height", height)
+      .style("background-color", "rgb(241, 237, 253") // TEMPORARY
   )
 
   const svgContent = (
@@ -90,7 +91,7 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
       .append("g")
   )
 
-  
+
   function xAxis(scale) {
     return d3.axisBottom(scale)
       .tickFormat(d3.format("$,"))
@@ -100,7 +101,7 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
     return d3.axisLeft(scale)
       .tickValues(d => "")
   }
-  
+
   const xAxisGroup = (
     svgContent.append("g")
       .attr("transform", `translate(0, ${contentHeight})`)
@@ -128,13 +129,13 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
   bars.filter(inMarketItemsBefore)
     .attr("width", (item => barXBefore(item.priceOnScale)))
 
-  
+
   const textSize = 14
   const barLabelOffset = 14
-  
-  
+
+
   const profileBoxGroup = svgContent.append("g")
-  
+
   const profileBoxHeight = 100
   const profileBoxX = (barXAfter(combinedProfileItem.priceOnScale) + barLabelOffset)
   const profileBoxY = (barY(combinedProfileItemIndex) + (barY.bandwidth() * 1.42) - profileBoxHeight)
@@ -146,7 +147,7 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
       .attr("height", profileBoxHeight)
       .attr("rx", 14)
       .attr("ry", 14)
-      .attr("fill", "#ede8ff")
+      .attr("fill", "rgb(251, 251, 255)")
       .attr("opacity", 0)
       .style("visibility", "hidden")
   )
@@ -172,7 +173,7 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
       .attr("opacity", 0)
       .style("visibility", "hidden")
   )
-  
+
 
   function createBarNameLabels(parentGroup, marketItems) {
     return (
@@ -193,13 +194,13 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
     svgContent.append("g"),
     marketItemsBefore
   )
-  
+
   const movingBarNameLabelCopies = createBarNameLabels(
     svgContent.append("g"),
     marketItemsBefore.filter(item => item.inProfile)
   )
   .attr("visibility", "hidden")
-  
+
 
   const barPriceLabels = (
     svgContent.append("g")
@@ -211,36 +212,44 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
       .attr("y", ((item, index) => barY(index) + (barY.bandwidth() / 2) + textSize))
       .attr("font-size", textSize)
       .attr("fill", "#603dde")
-  )    
-  
+  )
+
   const infoCard = containerDiv.append("div")
     .style("visibility", "hidden")
     .style("position", "absolute")
     .attr("transform", `translate(${margins.left}, ${margins.top})`)
     .style("max-width", "400px")
-    .style("padding", "20px")
+    .style("padding", "24px")
     .style("border-radius", "20px")
     .style("font-size", "12px")
-    .style("background-color", "#d0c3ff")
+    .style("background-color", "rgb(251, 251, 255)")
+    .style("box-shadow", "rgba(0, 0, 0, 0.14) 0px 3px 17px")
 
   const infoCardContent = (
     infoCard.append("div")
+      .style("display", "flex")
+      .style("align-items", "center")
+      .style("gap", "22px")
   )
 
+  const stepButtonsContainer = infoCard.append("div")
+    .style("display", "flex")
+    .style("justify-content", "space-between")
+
   const previousStepButton = (
-    infoCard.append("button")
+    stepButtonsContainer.append("button")
       .text("Back")
-      .style("font-size", "14px")
+      .attr("class", "idb-previous-step-button")
       .on("click", (clickEvent => {
         currentStepIndex -= 1
         moveToCurrentStep()
       }))
   )
-  
+
   const nextStepButton = (
-    infoCard.append("button")
+    stepButtonsContainer.append("button")
       .text("Next")
-      .style("font-size", "14px")
+      .attr("class", "idb-next-step-button")
       .on("click", (clickEvent => {
         currentStepIndex += 1
         moveToCurrentStep()
@@ -248,33 +257,34 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
   )
 
   const infoCardLine = svgContent.append("line")
-    .style("stroke", "#aaa")
-    .style("stroke-width", "2")
-  
+    .style("stroke", "#baa6f5")
+    .style("stroke-width", "3")
+    .style("visibility", "hidden")
+
   const infoCardSteps = [
     {
       itemIndex: 2,
       itemLabelWidth: 91,
       caption: "<strong>Email addresses</strong> are sold in bulk for less than $0.00001 a piece, because they are only useful for spamming and marketing.",
-      icon: ""
+      icon: '<svg width="90px" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="36" cy="7" r="7" fill="#D73131" fill-opacity="0.35"/> <path d="M2.63426 7C2.11642 7 1.64114 7.15674 1.23473 7.41466L16.6553 20.6429C17.4757 21.3469 18.4949 21.3469 19.3168 20.6429L34.7649 7.41466C34.3585 7.15674 33.8832 7 33.3653 7H2.63426ZM0.150976 8.78298C0.0569626 9.05603 0 9.34728 0 9.65362V27.346C0 28.8161 1.17469 30 2.63428 30H33.3657C34.8249 30 36 28.8165 36 27.346V9.65362C36 9.34725 35.943 9.056 35.849 8.78298L20.4559 21.9827C19.0285 23.2054 16.9439 23.2073 15.5169 21.9827L0.150976 8.78298Z" fill="#754EEB"/> <circle cx="36" cy="7" r="5" fill="#D73131"/> </svg>'
     },
     {
       itemIndex: 8,
       itemLabelWidth: 73,
       caption: "<strong>Email logins</strong> are sold for around $65 — these are valuable because they can be used to reset your passwords and gain access to lots of other services.",
-      icon: ""
+      icon: '<svg width="82px" viewBox="0 0 36 51" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="5" y="6" width="27" height="24" fill="#C4B421" fill-opacity="0.31"/> <path d="M20.1172 15.9788C19.4656 15.6313 18.7385 15.4496 18 15.4496C17.2615 15.4496 16.5344 15.6313 15.8828 15.9788L2.38275 23.1788C1.66293 23.5626 1.06098 24.1348 0.641282 24.8343C0.221582 25.5338 -8.1555e-05 26.3343 2.25088e-08 27.15V27.8565L15.0953 36.7035L18 35.088L20.9048 36.7035L36 27.8565V27.15C36.0001 26.3343 35.7784 25.5338 35.3587 24.8343C34.939 24.1348 34.3371 23.5626 33.6172 23.1788L20.1172 15.9788V15.9788ZM36 30.4643L23.1908 37.9725L36 45.087V30.462V30.4643ZM35.8672 47.589L18 37.662L0.13275 47.589C0.375758 48.5633 0.937668 49.4284 1.72906 50.0465C2.52044 50.6646 3.49583 51.0002 4.5 51H31.5C32.5042 51.0002 33.4796 50.6646 34.2709 50.0465C35.0623 49.4284 35.6242 48.5633 35.8672 47.589ZM2.25088e-08 45.0893L12.8092 37.9725L2.25088e-08 30.4643V45.0893V45.0893Z" fill="#754EEB"/> <rect x="7" y="4" width="5" height="4" fill="white"/> <path d="M11.0958 12C10.0047 11.9998 8.93372 11.7114 7.99448 11.1651C7.05524 10.6187 6.28219 9.83433 5.75598 8.89377C5.22977 7.9532 4.96967 6.89091 5.00282 5.81771C5.03596 4.74451 5.36115 3.69972 5.94444 2.79234C6.52773 1.88496 7.34777 1.14824 8.31899 0.659019C9.29022 0.169799 10.3771 -0.0539877 11.4661 0.0110035C12.5552 0.0759947 13.6066 0.427382 14.5106 1.02851C15.4146 1.62964 16.1382 2.45848 16.6058 3.42857H29.387L32 6L29.387 8.57143L27.645 6.85714L25.9029 8.57143L24.1609 6.85714L22.4189 8.57143L20.6769 6.85714L18.9349 8.57143H16.6058C16.1112 9.59748 15.3309 10.4643 14.3555 11.0713C13.3802 11.6782 12.2498 12.0002 11.0958 12V12ZM9.35378 7.71429C9.8158 7.71429 10.2589 7.53367 10.5856 7.21218C10.9123 6.89069 11.0958 6.45466 11.0958 6C11.0958 5.54534 10.9123 5.10931 10.5856 4.78782C10.2589 4.46633 9.8158 4.28572 9.35378 4.28572C8.89177 4.28572 8.44868 4.46633 8.12199 4.78782C7.7953 5.10931 7.61177 5.54534 7.61177 6C7.61177 6.45466 7.7953 6.89069 8.12199 7.21218C8.44868 7.53367 8.89177 7.71429 9.35378 7.71429V7.71429Z" fill="#C4B421"/> </svg>'
     },
     {
       itemIndex: 9,
       itemLabelWidth: 205,
       caption: "<strong>PayPal and cryptocurrency exchange logins</strong> sell for $100–$500, because the funds in those accounts can be withdrawn immediately.",
-      icon: ""
+      icon: '<svg width="72px" viewBox="0 0 38 58" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.6011 2.64647C27.0226 0.858434 24.1693 0.0918579 20.519 0.0918579H9.92496C9.5638 0.0918712 9.21449 0.219925 8.93983 0.452998C8.66518 0.68607 8.48319 1.00887 8.42659 1.36337L4.01541 29.1676C3.92773 29.7159 4.35492 30.2124 4.91407 30.2124H11.4545L13.0971 19.858L13.0461 20.1823C13.1631 19.4504 13.7929 18.9105 14.5388 18.9105H17.6468C23.7524 18.9105 28.5332 16.4459 29.9298 9.3161C29.9712 9.10523 30.0071 8.9 30.0382 8.69949C29.8619 8.60672 29.8619 8.60672 30.0382 8.69949C30.454 6.06426 30.0353 4.27048 28.6011 2.64647" fill="#27346A"/> <path d="M15.5997 7.75019C15.7785 7.66557 15.974 7.62172 16.1721 7.62184H24.4776C25.4611 7.62184 26.3785 7.68545 27.2168 7.81954C27.4513 7.85671 27.6847 7.90109 27.9165 7.95261C28.2451 8.02467 28.5698 8.11285 28.8896 8.21684C29.3017 8.35363 29.6855 8.51294 30.0383 8.69949C30.454 6.06325 30.0353 4.27048 28.6011 2.64647C27.0217 0.858434 24.1693 0.0918579 20.519 0.0918579H9.92405C9.17809 0.0918579 8.54349 0.63158 8.42659 1.36337L4.01541 29.1666C3.92774 29.7158 4.35492 30.2116 4.91317 30.2116H11.4545L14.8623 8.73416C14.8958 8.52306 14.9804 8.3232 15.1089 8.1518C15.2373 7.98039 15.4058 7.84257 15.5997 7.75019V7.75019Z" fill="#27346A"/> <path d="M29.9298 9.31611C28.5332 16.4449 23.7525 18.9105 17.6468 18.9105H14.5379C13.7921 18.9105 13.1621 19.4504 13.0462 20.1823L11.0027 33.0567C10.9264 33.5365 11.2998 33.9713 11.7882 33.9713H17.3016C17.6175 33.9712 17.9229 33.8591 18.163 33.6552C18.4031 33.4513 18.5621 33.169 18.6115 32.859L18.6652 32.5798L19.7043 26.0347L19.7713 25.6729C19.8206 25.3629 19.9796 25.0806 20.2197 24.8767C20.4598 24.6728 20.7652 24.5607 21.081 24.5606H21.9062C27.247 24.5606 31.429 22.4042 32.6511 16.1676C33.1612 13.5613 32.8973 11.3853 31.5479 9.85684C31.1386 9.3939 30.6303 9.01157 30.0382 8.69949C30.0061 8.90102 29.9713 9.10524 29.9298 9.31611V9.31611Z" fill="#2790C3"/> <path d="M28.5766 8.12037C28.3589 8.05717 28.139 8.00123 27.9175 7.95262C27.6856 7.90194 27.4523 7.85786 27.2178 7.82045C26.3786 7.68546 25.4619 7.62174 24.4775 7.62174H16.173C15.9748 7.62129 15.7791 7.66552 15.6006 7.7511C15.4065 7.8432 15.2378 7.98094 15.1093 8.15239C14.9808 8.32384 14.8963 8.52384 14.8631 8.73507L13.098 19.858L13.047 20.1823C13.1631 19.4504 13.793 18.9105 14.5389 18.9105H17.6478C23.7534 18.9105 28.5341 16.4459 29.9307 9.31611C29.9722 9.10524 30.0071 8.9009 30.0392 8.69949C29.6855 8.51396 29.3027 8.35364 28.8905 8.21775C28.7865 8.18348 28.6819 8.15101 28.5767 8.12037" fill="#1F264F"/> <path d="M38 49.5L19.8359 41V45.5794H7V53.4206H19.8359V58L38 49.5Z" fill="#5BAE44" fill-opacity="0.39"/> <path d="M30 49.5L12.4219 41V45.5794H0V53.4206H12.4219V58L30 49.5Z" fill="#5BAE44"/> </svg> '
     },
     {
       itemIndex: 4,
       itemLabelWidth: 149,
       caption: "Your <strong>social security number</strong> by itself will sell for only $1-2. But see just how much more valuable it gets when it’s combined with your name, mailing address, and phone number:",
-      icon: ""
+      icon: '<svg width="82px" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3.62477 0C2.66342 0 1.74145 0.381918 1.06167 1.06174C0.381895 1.74156 0 2.66359 0 3.625V21.75C0 22.7114 0.381895 23.6334 1.06167 24.3133C1.74145 24.9931 2.66342 25.375 3.62477 25.375H13.0437C12.6178 23.9975 12.433 22.301 13.2304 21.025C13.4733 20.5991 13.7995 20.2348 14.1783 19.9375H11.7805C11.5402 19.9375 11.3097 19.842 11.1397 19.6721C10.9698 19.5021 10.8743 19.2716 10.8743 19.0312C10.8743 18.7909 10.9698 18.5604 11.1397 18.3904C11.3097 18.2205 11.5402 18.125 11.7805 18.125H17.0509C16.559 17.3041 16.3031 16.3633 16.3115 15.4062C16.3115 15.0963 16.335 14.7936 16.3822 14.5H11.7805C11.5402 14.5 11.3097 14.4045 11.1397 14.2346C10.9698 14.0646 10.8743 13.8341 10.8743 13.5938C10.8743 13.3534 10.9698 13.1229 11.1397 12.9529C11.3097 12.783 11.5402 12.6875 11.7805 12.6875H17.002C17.9191 11.0418 19.668 9.96875 21.7486 9.96875C22.6548 9.96875 23.561 10.15 24.4672 10.6937C24.7935 10.875 25.0961 11.0925 25.3734 11.3372V3.625C25.3734 2.66359 24.9915 1.74156 24.3117 1.06174C23.632 0.381918 22.71 0 21.7486 0H3.62477ZM8.15574 7.70312C8.15574 8.06365 8.01253 8.40942 7.75761 8.66435C7.5027 8.91928 7.15696 9.0625 6.79645 9.0625C6.43594 9.0625 6.0902 8.91928 5.83529 8.66435C5.58037 8.40942 5.43716 8.06365 5.43716 7.70312C5.43716 7.3426 5.58037 6.99683 5.83529 6.7419C6.0902 6.48697 6.43594 6.34375 6.79645 6.34375C7.15696 6.34375 7.5027 6.48697 7.75761 6.7419C8.01253 6.99683 8.15574 7.3426 8.15574 7.70312ZM6.79645 14.5C6.43594 14.5 6.0902 14.3568 5.83529 14.1018C5.58037 13.8469 5.43716 13.5012 5.43716 13.1406C5.43716 12.7801 5.58037 12.4343 5.83529 12.1794C6.0902 11.9245 6.43594 11.7812 6.79645 11.7812C7.15696 11.7812 7.5027 11.9245 7.75761 12.1794C8.01253 12.4343 8.15574 12.7801 8.15574 13.1406C8.15574 13.5012 8.01253 13.8469 7.75761 14.1018C7.5027 14.3568 7.15696 14.5 6.79645 14.5ZM8.15574 18.5781C8.15574 18.9387 8.01253 19.2844 7.75761 19.5393C7.5027 19.7943 7.15696 19.9375 6.79645 19.9375C6.43594 19.9375 6.0902 19.7943 5.83529 19.5393C5.58037 19.2844 5.43716 18.9387 5.43716 18.5781C5.43716 18.2176 5.58037 17.8718 5.83529 17.6169C6.0902 17.362 6.43594 17.2188 6.79645 17.2188C7.15696 17.2188 7.5027 17.362 7.75761 17.6169C8.01253 17.8718 8.15574 18.2176 8.15574 18.5781V18.5781ZM11.7805 7.25H19.0301C19.2704 7.25 19.5009 7.34548 19.6708 7.51543C19.8408 7.68539 19.9363 7.9159 19.9363 8.15625C19.9363 8.3966 19.8408 8.62711 19.6708 8.79707C19.5009 8.96702 19.2704 9.0625 19.0301 9.0625H11.7805C11.5402 9.0625 11.3097 8.96702 11.1397 8.79707C10.9698 8.62711 10.8743 8.3966 10.8743 8.15625C10.8743 7.9159 10.9698 7.68539 11.1397 7.51543C11.3097 7.34548 11.5402 7.25 11.7805 7.25ZM23.561 12.267C23.1487 12.029 22.6935 11.8745 22.2215 11.8124C21.7494 11.7503 21.2698 11.7818 20.8099 11.9051C19.8812 12.1541 19.0894 12.7618 18.6087 13.5947C18.128 14.4275 17.9978 15.4171 18.2468 16.346C18.4958 17.2748 19.1035 18.0666 19.9363 18.5473C20.769 19.028 21.7586 19.1582 22.6874 18.9092C23.6161 18.6602 24.4079 18.0525 24.8886 17.2197C25.3693 16.3868 25.4994 15.3972 25.2505 14.4684C25.0015 13.5396 24.3938 12.7477 23.561 12.267ZM14.4991 23.1094C14.4991 21.8588 15.514 20.8438 16.7646 20.8438H26.7327C27.9833 20.8438 28.9982 21.8588 28.9982 23.1094V23.2689C29 23.3976 29.0018 23.5263 28.9964 23.6549C28.9795 23.9315 28.9395 24.2061 28.8768 24.476C28.7205 25.1475 28.4375 25.7829 28.0431 26.3483C27.0499 27.7621 25.165 29 21.7486 29C18.8289 29 17.0256 28.0938 15.9472 26.9519C15.2922 26.2598 14.8347 25.4049 14.6223 24.476C14.559 24.2062 14.5184 23.9315 14.5009 23.6549L14.4991 23.1148V23.1094Z" fill="#754EEB"/> </svg> '
     }
   ]
 
@@ -282,7 +292,8 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
 
   function infoCardContentsForStep(step) {
     var contents = ""
-    contents += '<p style="font-size: 16px">' + step.caption + '</p>'
+    contents += step.icon
+    contents += '<p style="flex-shrink: 2; font-size: 16px">' + step.caption + '</p>'
     return contents
   }
 
@@ -290,45 +301,45 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
     if (currentStepIndex >= infoCardSteps.length) {
       infoCard
         .transition()
-        .duration(200)
+        .duration(400)
         .ease(d3.easeCubic)
         .style("opacity", 0)
-        .style("visibility", "hidden")
       infoCardLine
         .transition()
-        .duration(200)
+        .duration(400)
         .ease(d3.easeCubic)
         .style("opacity", 0)
-        .style("visibility", "hidden")
-      movingBarNameLabelCopies
-        .transition()
-        .delay(195)
-        .attr("visibility", "visible")
-      standardTransition(movingBarNameLabelCopies)
-        .delay(200)
-        .attr("x", (profileBoxX + 12))
-        .attr("y", ((item, index) => ((profileBoxY + 23) + (index * (textSize + 2)))))
-      // standardTransition(barPriceLabels.filter(item => item.inProfile))
-      //   .delay(200)
-      //   .attr("opacity", 0)
-      .on("end", (() => {
-        standardTransition(profileBox)
-          .duration(1000)
-          .attr("opacity", 1)
-          .style("visibility", "visible")
         .on("end", (() => {
-          standardTransition(bars)
-            .attr("width", (item => barXAfter(item.priceOnScale)))
+          movingBarNameLabelCopies
+            .transition()
+            .delay(195)
+            .attr("visibility", "visible")
+          standardTransition(movingBarNameLabelCopies)
+            .delay(200)
+            .attr("x", (profileBoxX + 12))
+            .attr("y", ((item, index) => ((profileBoxY + 23) + (index * (textSize + 2)))))
+          // standardTransition(barPriceLabels.filter(item => item.inProfile))
+          //   .delay(200)
+          //   .attr("opacity", 0)
           .on("end", (() => {
-            standardTransition(profileBoxNameLabel)
+            standardTransition(profileBox)
+              .duration(1000)
               .attr("opacity", 1)
               .style("visibility", "visible")
-            standardTransition(profileBoxPriceLabel)
-              .attr("opacity", 1)
-              .style("visibility", "visible")
+            .on("end", (() => {
+              standardTransition(bars)
+                .attr("width", (item => barXAfter(item.priceOnScale)))
+              .on("end", (() => {
+                standardTransition(profileBoxNameLabel)
+                  .attr("opacity", 1)
+                  .style("visibility", "visible")
+                standardTransition(profileBoxPriceLabel)
+                  .attr("opacity", 1)
+                  .style("visibility", "visible")
+              }))
+            }))
           }))
         }))
-      }))
       return
     }
     const step = infoCardSteps[currentStepIndex]
@@ -349,7 +360,6 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
       .transition()
       .duration(400)
       .ease(d3.easeCubic)
-      .style("visibility", "visible")
       .style("top", `${lineY2 - 50}px`)
       .style("left", `${lineX2 + 20}px`)
       .on("end", (() => {
@@ -359,27 +369,32 @@ function _infoPricesAnimatedChart(width,marketItems,combinedProfileItem,d3,combi
           .attr("disabled", ((currentStepIndex == 0) ? "true" : null))
         nextStepButton
           .text((currentStepIndex == (infoCardSteps.length - 1)) ? "Combine" : "Next")
+        infoCard
+          .style("visibility", "visible")
+        infoCardLine
+          .style("visibility", "visible")
       }))
   }
 
   moveToCurrentStep()
 
-  
+
+  if (combineButtonWasClicked) {
+    // ...
+  }
+
+
   function standardTransition(selection) {
     return selection
       .transition()
       .duration(1500)
       .ease(d3.easeCubic)
   }
-  
-  if (combineButtonWasClicked) {
-      
-  }
 
-  
+
   return containerDiv.node()
 
-  
+
 }
 
 
@@ -516,13 +531,13 @@ function _breachTargetsChart(width,d3,prcYearsDomain,organizationTypeLines,organ
 
 
   const lineColors = new Map([
-    [5, "#603dde"],
-    [2, "#1a9a5c"],
-    [0, "#c4b421"],
-    [1, "#d7372f"],
-    [3, "#3890e0"],
-    [4, "#d64b91"],
-    [6, "#e18a0b"]
+    [5, "#32188d"],
+    [2, "#603dde"],
+    [6, "#0f5734"],
+    [4, "#1a9a5c"],
+    [0, "#147848"],
+    [1, "#20bc70"],
+    [3, "#23cc7a"]
   ])
 
   const defaultHighlightedLineIndices = [5, 2]
