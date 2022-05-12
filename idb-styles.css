@@ -6,6 +6,7 @@
 	--light-green-color: #5ae3a1;
 	--very-light-purple-color: rgb(251, 251, 255);
 	--light-purple-color: rgb(241, 237, 253);
+	--light-purple-color-nav: rgb(229, 221, 255);
 	--medium-purple-color: #3b1eaa;
 	--dark-purple-color: #2a1578;
 	--very-dark-purple-color: #120935;
@@ -154,7 +155,7 @@ flex: 1;
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px;
-	background: var(--very-dark-purple-color);
+	background: var(--light-purple-color-nav);
 	color: #fff;
 	z-index: 100;
 }
@@ -164,13 +165,12 @@ flex: 1;
 }
 
 .idb-nav-links a{
-	color: #fff;
+	color: var(--medium-purple-color)
 }
 
 .idb-nav-links a:hover{
-	color: var(--light-green-color);
+	color: var(--light-purple-color);
 }
-
 
 
 .idb-menu{
@@ -178,7 +178,6 @@ flex: 1;
  	gap: 1em;
  	font-size: 18px;
 }
-
 
 .idb-menu li:hover {
 	color: var(--light-green-color);
