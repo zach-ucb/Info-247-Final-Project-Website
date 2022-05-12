@@ -44,8 +44,6 @@
 				<p>A <b>data breach</b> is when <b>confidential or sensitive information</b> is <b>stolen or exposed</b>, and then <b>used by an unauthorized party.</b>
 				<b></b>Anyone and anything could be a target of data breach, but <b>the vast majority of data breaches happen to companies</b> that have billions of data about individuals like you.</p>
 
-				<br><br>
-
 				<h2 class="idb-note-header">What does it mean for me?</h2>
 				<p>You probably have heard about data breaches, or even experienced them.
 				But what does that mean for you?</p>
@@ -80,14 +78,14 @@
 			<div class="idb-event-section-header">
 				<span class="idb-event-section-header-clock">3:42<span class="idb-event-section-header-clock-am-pm">AM</span></span>
 				<h2 class="idb-event-section-header-title">The breach begins</h2>
-				<p class="idb-event-section-header-description">A hacker breaks into your hospital's network and starts extracting their database.</p>
+				<p class="idb-event-section-header-description">A hacker breaks into your bank’s network and starts extracting the contents of a customer database.</p>
 			</div>
 			<!-- BEGIN SECTION CONTENT -->
 			<div class="idb-section-content">
-				<h3 class="idb-event-subsection-title">Healthcare and non-retail businesses being targeted more recently.</h3>
-				<p>Schools, governments, and retailers used to be the targets, but the targets have been changing.</p>
+				<h3 class="idb-event-subsection-title">Non-retail businesses and healthcare providers have been the most popular targets for breaches recently.</h3>
+				<p>Schools, governments, and retailers used to be bigger targets, but have since seen a steady drop in yearly breaches.</p>
 				<div id="idb-observable-embed-breach-targets-time-plot" class="idb-event-chart" style="margin-top: 20px; margin-bottom: 60px"></div>
-				<span class="idb-event-chart-footer-note">Click to highlight different sectors</span>
+				<span class="idb-event-chart-footer-note">Click the lines or labels to add or remove organization types from the comparison</span>
 				<script type="module">
 					import define from "./observable-embeds/line-and-bar-charts/index.js";
 					import {Runtime, Library, Inspector} from "./observable-embeds/info-types-interactive-tree/runtime.js";
@@ -174,6 +172,9 @@
 						else if (name === "infoPricesAnimatedChart") {
 							return new Inspector(document.querySelector("#idb-observable-embed-info-prices-animated-chart"))
 						}
+						else if (name === "viewof combineButtonWasClicked") {
+							return new Inspector(document.querySelector("#idb-observable-embed-info-prices-animated-chart-reset-button"))
+						}
 					}));
 					main.redefine("width", resizer(hackBreachesChartDiv.parentNode, "width"));
 					main.redefine("height", resizer(hackBreachesChartDiv.parentNode, "height"));
@@ -250,8 +251,8 @@
 			<div class="idb-section-content">
 				<h3 class="idb-event-subsection-title">The price of your data varies depending on its use, and packaged profiles are among the most valuable items</h3>
 				<div class="idb-observable-embed-info-prices-animated-chart-container">
-					<div id="idb-observable-embed-info-prices-animated-chart-button"></div>
 					<div id="idb-observable-embed-info-prices-animated-chart" style="position: relative"></div>
+					<div id="idb-observable-embed-info-prices-animated-chart-reset-button"></div>
 				</div>
 				<h4 class="idb-event-chart-group-title">Prices of Stolen Personal Information on the Dark Web</h4>
 				<p><strong>Hover to explore what’s for sale at which prices:</strong></p>
