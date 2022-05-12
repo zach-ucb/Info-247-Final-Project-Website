@@ -18,7 +18,7 @@
 	<body class="idb-page-body" role="document">
 
 		<!-- HERO SECTION-->
-		<div class="idb-intro-section" id="top">
+		<section class="idb-intro-section" id="top">
 			<div>
 				<h1 class="idb-intro-title-group">
 					<span class="idb-intro-title">HACKED<span class="idb-intro-title-underscore animate__animated animate__flash animate__infinite animate__slow">|</span></span><br>
@@ -32,12 +32,12 @@
 					<span class="idb-intro-scroll-guidance-text"></span>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- END HERO SECTION -->
 
 
 		<!-- WHAT IS SECTION -->
-		<div class="idb-note-section idb-section" id="section-1">
+		<section class="idb-note-section idb-section" id="section-1">
 			<div class="idb-section-half">
 				<h2 class="idb-note-header">What exactly is a data breach?</h2>
 				<p>A <b>data breach</b> is when <b>confidential or sensitive information</b> is <b>stolen or exposed</b>, and then <b>used by an unauthorized party.</b>
@@ -55,7 +55,7 @@
 				</div>
 
 			</div>
-		</div>
+		</section>
 		<!-- END WHAT IS SECTION -->
 
 		<!-- STICKY NAVBAR -->
@@ -73,7 +73,7 @@
 		<!-- END NAVBAR -->
 
 		<!-- BREACH BEGINS SECTION -->
-		<div class="idb-event-section idb-section" id="section-2">
+		<section class="idb-event-section idb-section" id="section-2">
 			<div class="idb-event-section-header">
 				<span class="idb-event-section-header-clock">3:42<span class="idb-event-section-header-clock-am-pm">AM</span></span>
 				<h2 class="idb-event-section-header-title">The breach begins</h2>
@@ -190,8 +190,10 @@
 				</script>
 			</div>
 			<!-- END SECTION CONTENT -->
-		</div>
-		<div class="idb-event-section idb-section" id="section-3">
+		</section>
+
+		<!-- STOLEN SECTION -->
+		<section class="idb-event-section idb-section" id="section-3">
 			<div class="idb-event-section-header">
 				<span class="idb-event-section-header-clock">4:15<span class="idb-event-section-header-clock-am-pm">AM</span></span>
 				<h2 class="idb-event-section-header-title">Your data is stolen</h2>
@@ -231,8 +233,11 @@
 				<script type="module" src="info-types-interactive-tree-embed.js"></script>
 			</div>
 			<!-- DATA STOLEN - END SECTION CONTENT -->
-		</div>
-		<div class="idb-event-section idb-section" id="section-4">
+		</section>
+		<!-- END SECTION -->
+
+		<!-- BEGIN SOLD SECTION -->
+		<section class="idb-event-section idb-section" id="section-4">
 			<div class="idb-event-section-header">
 				<span class="idb-event-section-header-clock">12:04<span class="idb-event-section-header-clock-am-pm">PM</span></span>
 				<h2 class="idb-event-section-header-title">Your data is sold on<br class="d-none d-md-block">dark web marketplaces</h2>
@@ -271,8 +276,11 @@
 				<!-- End of Tableau Embed -->
 			</div>
 			</div>
-		</div>
-		<div class="idb-event-section idb-section" id="section-5">
+		</section>
+		<!-- END SOLD SECTION -->
+
+		<!-- BEGIN BUYER ATTACK SECTION -->
+		<section class="idb-event-section idb-section" id="section-5">
 			<div class="idb-event-section-header">
 				<span class="idb-event-section-header-clock">11:42<span class="idb-event-section-header-clock-am-pm">PM</span> the next day</span>
 				<h2 class="idb-event-section-header-title">The buyer launches<br class="d-none d-md-block">their attacks</h2>
@@ -298,10 +306,11 @@
 				<!-- <h3 class="idb-event-subsection-title">...and identity theft and identity fraud are on the rise</h3> -->
 				<!-- Identity fraud line chart -->
 			</div>
-		</div>
+		</section>
+		<!-- END SECTION -->
 
 		<!-- BEGIN CTA SECTION -->
-		<div class="idb-event-section idb-section" id="section-6">
+		<section class="idb-event-section idb-section" id="section-6">
 			<div class="idb-event-section-header">
 				<h2 class="idb-event-section-header-title">What can I do about it?</h2>
 				<p class="idb-event-section-header-description">The number of stolen records is increasing, but you’re not helpless! There’s a lot you can do to keep yourself protected.</p>
@@ -381,7 +390,8 @@
 					</div>
 
 				</div>
-		</div>
+			</div>
+		</section>
 		<!-- END CTA SECTION -->
 
 		<!-- BEGIN FOOTER -->
@@ -471,7 +481,26 @@
 				header.classList.remove("idb-navbar-sticky");
 			}
 			}
-			</script>
+		</script>
+
+		<!-- <script>
+			window.onscroll = () => {
+			var current = "";
+
+			sections.forEach((section) => {
+				const sectionTop = section.offsetTop;
+				if (pageYOffset >= sectionTop ) {
+				current = section.getAttribute("id"); }
+			});
+
+			navLi.forEach((li) => {
+				li.classList.remove("active");
+				if (li.classList.contains(current)) {
+				li.classList.add("active");
+				}
+			});
+			};
+		</script> -->
 
 
 		</body>
